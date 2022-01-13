@@ -1,13 +1,18 @@
 package sfa.springframework.sfa.di.controllers;
 
 import org.springframework.stereotype.Controller;
+import sfa.springframework.sfa.di.services.GreetingService;
 
 @Controller
 public class MyController {
 
-    public String sayHello(){
-        System.out.println("Hellow Dear !!");
+    private final GreetingService greetingService;
 
-        return "Hi Safae";
+    public MyController(GreetingService greetingService) {
+        this.greetingService = greetingService;
+    }
+
+    public String sayHello(){
+        return greetingService.sayGreeting();
     }
 }
