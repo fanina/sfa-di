@@ -4,10 +4,7 @@ import com.sun.javafx.scene.traversal.SubSceneTraversalEngine;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import sfa.springframework.sfa.di.controllers.ConstructorInjectionController;
-import sfa.springframework.sfa.di.controllers.MyController;
-import sfa.springframework.sfa.di.controllers.PropretyInjectionController;
-import sfa.springframework.sfa.di.controllers.SetterInjectionController;
+import sfa.springframework.sfa.di.controllers.*;
 
 @SpringBootApplication
 public class Application {
@@ -16,6 +13,9 @@ public class Application {
 
 		ApplicationContext ctx = SpringApplication.run(Application.class, args);
 		MyController myController = (MyController) ctx.getBean("myController");
+
+		I18nController i18nController = (I18nController) ctx.getBean("i18nController");
+		System.out.println(i18nController.sayHello());
 
 		System.out.println("-----Primary");
 		System.out.println(myController.sayHello());
@@ -34,6 +34,7 @@ public class Application {
 
 		ConstructorInjectionController constructorInjectionController = (ConstructorInjectionController) ctx.getBean("constructorInjectionController");
 		System.out.println(constructorInjectionController.getGreeting());
+
 	}
 
 }
